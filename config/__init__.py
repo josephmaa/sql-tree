@@ -1,4 +1,4 @@
-from sql-tree.config.params import param_dict as classes
+from config.params import params_dict as classes
 
 params_config = dict(
     **classes
