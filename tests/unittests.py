@@ -1,6 +1,6 @@
 import unittest
 
-from tree.classes import Lexer
+from tree.classes import Lexer, SQLQuery
 
 
 class testLexer(unittest.TestCase):
@@ -24,7 +24,7 @@ class testLexer(unittest.TestCase):
         lexer = Lexer(pathToRawInput='')
         self.assertEqual(
             lexer.tokenizeQuery(input),
-            ['SELECT', 'id', ',', 'people', 'FROM', 'users']
+            ['SELECT', 'id', ',', 'people', 'FROM', 'users', ';']
         )
 
     def testTokenizeQueryComplex(self):
@@ -35,8 +35,18 @@ class testLexer(unittest.TestCase):
         lexer = Lexer(pathToRawInput='')
         self.assertEqual(lexer.tokenizeQuery(input),
                          ['SELECT', 'Name', ',', 'OrderDate', 'FROM', 'Customer', ',',
-                             'Order', 'WHERE', 'Order."OrderDate"', '=', 'Order."ShipDate"']
+                             'Order', 'WHERE', 'Order."OrderDate"', '=', 'Order."ShipDate"', ';']
                          )
+    
+    def testIsValidIdentifierRegex(self):
+        """
+        Test regex search for some known valid identifiers and invalid identifiers
+        """
+        queries = SQLQuery(tokens=[])
+        identifiers = ['test', '0test', 'test_', 'test__', 'TEST']
+        areValidIdentifiers = [True, False, True, False, True]
+        self.assertEqual()
+    
 
 
 if __name__ == '__main__':

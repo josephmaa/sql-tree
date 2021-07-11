@@ -1,18 +1,25 @@
 # Dict of SQL class
 params_dict = {}
 
-key = 'restrict'
-params_dict[key] = set(['WHERE', 'JOIN'])
-help_str = ''
+key = 'SELECT'
+params_dict[key] = 'PROJECT'
 
-key = 'project'
-params_dict[key] = set(['SELECT', 'SUM']),
+key = 'SUM'
+params_dict[key] = 'PROJECT'
 
-key = 'join'
-params_dict[key] = set(['FROM', 'JOIN'])
+key = 'FROM'
+params_dict[key] = 'JOIN'
 
-key = 'sort'
-params_dict[key] = set([])
+key = 'JOIN'
+params_dict[key] = 'JOIN'
 
-key = 'table'
-params_dict[key] = set([])
+key = 'WHERE'
+params_dict[key] = 'RESTRICT'
+
+
+# TODO(joseph): not too sure about implementing this functionality, since TABLE doesn't seem like it'll be used frequently 
+# key = 'SORT'
+# params_dict[key] = set([])
+
+# key = 'TABLE'
+# params_dict[key] = set([])
