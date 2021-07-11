@@ -1,0 +1,2 @@
+queries;
+SELECT id, people FROM users; SELECT tomato FROM fruits; SELECT Name, OrderDate FROM Customer, Order WHERE Order."OrderDate" = Order."ShipDate";
